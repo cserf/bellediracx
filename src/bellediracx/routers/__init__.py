@@ -102,8 +102,8 @@ def create_app_inner(
 
         # Add the router to the application
         dependencies = []
-        if isinstance(router, DiracxRouter) and router.diracx_require_auth:
-            dependencies.append(Depends(verify_dirac_token))
+        #if isinstance(router, DiracxRouter) and router.diracx_require_auth:
+            #dependencies.append(Depends(verify_dirac_token))
         app.include_router(
             router,
             prefix=f"/{system_name}",
