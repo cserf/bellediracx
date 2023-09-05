@@ -16,9 +16,9 @@ USER_CODE_LENGTH = 8
 
 Base = declarative_base()
 
-class StateStatus(Enum):
+class StagingStatus(Enum):
     """
-    Status of the LFN or LPN
+    Staging status of the LFN or LPN
     """
     ToStage = auto()
     Staging = auto()
@@ -29,11 +29,11 @@ class StateStatus(Enum):
     Error = auto()
 
 
-class StagingBaseLPNsPARAMS(Base):
-    __tablename__ = "StagingBaseLPNsPARAMS"
-    ID = Column(Uuid(as_uuid=False), primary_key=True)
+class StagingBaseLPNs(Base):
+    __tablename__ = "StagingBaseLPNs"
+    ID = Column(Integer, autoincrement=True, primary_key=True)
     BaseLPN = Column(String(255))
-    STATUS = EnumColumn(StateStatus, server_default=StateStatus.ToStage.name)
+    Status = EnumColumn(StagingStatus, server_default=StagingStatus.ToStage.name)
     ProductionID = Column(Integer)
     ProductionStatus = EnumColumn(Enum('', 'Done'), default='')
     Priority = Column(Integer, default=3) 
